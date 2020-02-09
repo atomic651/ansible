@@ -1,0 +1,13 @@
+---
+- name: Install Nginx
+  hosts: all
+  tasks:
+  - name: install Nginx
+    yum: name=nginx state=present
+    become: yes
+  - name: Stop Nginx
+    service: name=nginx state=stopped enabled=no
+  - name: Del Nginx
+    yum: name=nginx state=absent
+  - name: Del Nginx-common
+    yum: name=nginx-common state=absent
